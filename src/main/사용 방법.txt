@@ -1,0 +1,29 @@
+IU 기능 요약
+    Entity Class 자동생성
+    Dao Class 자동생성
+    Load Class 자동생성(runnable 적용되어있음)
+        업무적인 부분만 손보면 끝
+
+사용법
+
+1 lombok 설치
+
+2 테이블 설계
+    2-1 Code, CodeCategory 테이블 생성
+        Code
+            CodeId
+            CodeName
+            CodeCategoryId
+
+        CodeCategory
+            CodeCategoryId
+            CodeCategoryName
+
+    2-2 Code 테이블과 매칭되는 컬럼 이름 = '%Code' (다른 컬럼에 지정 단어 사용 금지)
+
+3 core.Core 에  Connection 설정
+
+4 Entity, Dao Class 생성
+
+5 Load Class 생성
+    5-1 setEntity 구현

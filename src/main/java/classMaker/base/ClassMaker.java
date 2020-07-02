@@ -15,8 +15,8 @@ public abstract class ClassMaker {
     @SneakyThrows
     public boolean makeClass(String tableName) {
         this.tableName = tableName;
-        conn = Core.getInstance().getConnection();
-        this.tableData = new TableData(tableName);
+        conn = Core.getInstance().getConnection(); //커넥션은 core의 것만 사용합니다.
+        this.tableData = new TableData(tableName); //table 정보들을 담아보았어요
 
         String code = "";
 
@@ -58,7 +58,7 @@ public abstract class ClassMaker {
     }
     protected abstract String writeMethodCode(String code) throws SQLException;
 
-    //환경설정? 메소드들
+    //환경설정 메소드들
     protected abstract String getMakePath();
     protected abstract String getClassType();
 
