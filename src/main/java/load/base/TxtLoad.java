@@ -40,6 +40,7 @@ public abstract class TxtLoad<Entity> extends Load<Entity, BufferedReader> {
 
     protected abstract String setCharacterSet();
 
+    @Override
     protected BufferedReader getFile(String fileDirectory) {
         try {
             BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fileDirectory)), setCharacterSet()));

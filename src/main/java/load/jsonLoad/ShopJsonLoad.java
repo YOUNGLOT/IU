@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.Shop;
-import dao.ShopDao;
+import dao.ShopEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -61,7 +61,7 @@ public class ShopJsonLoad extends JsonLoad<Shop> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return ShopDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return ShopEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -77,7 +77,7 @@ public class ShopJsonLoad extends JsonLoad<Shop> {
 
 	@Override
 	protected int insert(Shop entity){
-		return ShopDao.getInstance().insert(entity);
+		return ShopEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

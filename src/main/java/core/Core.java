@@ -40,7 +40,7 @@ public class Core {
 
     @SneakyThrows
     public void makeEntityAndDaoClass(){
-        ArrayList<String> tableNames = findTable_MSSQL();
+        ArrayList<String> tableNames = getTableNames_MSSQL();
         for (int i = 0; i < tableNames.size(); i++) {
             EntityClassMaker.getInstance().makeClass(tableNames.get(i));
             DaoClassMaker.getInstance().makeClass(tableNames.get(i));
@@ -49,7 +49,7 @@ public class Core {
 
     @SneakyThrows
     public void makeLoadClass(){
-        ArrayList<String> tableNames = findTable_MSSQL();
+        ArrayList<String> tableNames = getTableNames_MSSQL();
         for (int i = 0; i < tableNames.size(); i++) {
             JsonLoadClassMaker.getInstance().makeClass(tableNames.get(i));
             TxtLoadClassMaker.getInstance().makeClass(tableNames.get(i));
@@ -108,7 +108,7 @@ public class Core {
         }
     }
 
-    public ArrayList findTable_MSSQL() throws SQLException {
+    public ArrayList getTableNames_MSSQL() throws SQLException {
 
         Connection con = getConnection();
         ArrayList<String> arrayList = new ArrayList<>();

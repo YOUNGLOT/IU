@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.PublishCount;
-import dao.PublishCountDao;
+import dao.PublishCountEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -57,7 +57,7 @@ public class PublishCountJsonLoad extends JsonLoad<PublishCount> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return PublishCountDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return PublishCountEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class PublishCountJsonLoad extends JsonLoad<PublishCount> {
 
 	@Override
 	protected int insert(PublishCount entity){
-		return PublishCountDao.getInstance().insert(entity);
+		return PublishCountEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

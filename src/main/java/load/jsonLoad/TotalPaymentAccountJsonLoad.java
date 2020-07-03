@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.TotalPaymentAccount;
-import dao.TotalPaymentAccountDao;
+import dao.TotalPaymentAccountEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -58,7 +58,7 @@ public class TotalPaymentAccountJsonLoad extends JsonLoad<TotalPaymentAccount> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return TotalPaymentAccountDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return TotalPaymentAccountEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class TotalPaymentAccountJsonLoad extends JsonLoad<TotalPaymentAccount> {
 
 	@Override
 	protected int insert(TotalPaymentAccount entity){
-		return TotalPaymentAccountDao.getInstance().insert(entity);
+		return TotalPaymentAccountEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

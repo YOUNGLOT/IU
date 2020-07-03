@@ -1,21 +1,21 @@
 package dao;
-import entity.CodeCategory;
-import dao.base.ParameterSetter;
 import dao.base.EntityDao;
+import entity.Code;
+import dao.base.ParameterSetter;
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class CodeCategoryDao extends EntityDao<CodeCategory> {
+public class CodeEntityDao extends EntityDao<Code> {
 	//region singleton
-	private CodeCategoryDao() {
+	private CodeEntityDao() {
 	}
 	
-	private static CodeCategoryDao _instance;
+	private static CodeEntityDao _instance;
 	
-	public static CodeCategoryDao getInstance() {
+	public static CodeEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new CodeCategoryDao();
+			_instance = new CodeEntityDao();
 	
 		return _instance;
 	}
@@ -23,22 +23,23 @@ public class CodeCategoryDao extends EntityDao<CodeCategory> {
 
 	@Override
 	protected String setTableName() {
-		return "CodeCategory";
+		return "Code";
 	}
 
 	@SneakyThrows
 	@Override
-	protected CodeCategory readEntity(ResultSet result) {
-		CodeCategory entity = new CodeCategory();
+	protected Code readEntity(ResultSet result) {
+		Code entity = new Code();
 
-		entity.setCodeCategoryId(result.getInt(1));
-		entity.setCodeCategoryName(result.getString(2));
+		entity.setCodeId(result.getInt(1));
+		entity.setCodeName(result.getString(2));
+		entity.setCodeCategoryId(result.getInt(3));
 
 	return entity;
 }
 
 	@Override
-	public int update(CodeCategory entity) {
+	public int update(Code entity) {
 
 		String query = updateQuery();
 
@@ -48,13 +49,14 @@ public class CodeCategoryDao extends EntityDao<CodeCategory> {
 			@Override
 			public void setValue(PreparedStatement statement) {
 
-				statement.setString(1, entity.getCodeCategoryName());
+				statement.setString(1, entity.getCodeName());
 				statement.setInt(2, entity.getCodeCategoryId());
+				statement.setInt(3, entity.getCodeId());
 			}
 		});
 	}
 
-	public int insert(CodeCategory entity) {
+	public int insert(Code entity) {
 
 		String query = insertQuery();
 
@@ -64,14 +66,14 @@ public class CodeCategoryDao extends EntityDao<CodeCategory> {
 			@Override
 			public void setValue(PreparedStatement statement) {
 
-				statement.setInt(1, entity.getCodeCategoryId());
-				statement.setString(2, entity.getCodeCategoryName());
+				statement.setInt(1, entity.getCodeId());
+				statement.setString(2, entity.getCodeName());
+				statement.setInt(3, entity.getCodeCategoryId());
 			}
 		});
 	}
 
-	@SneakyThrows
-	protected CodeCategory getByKey(int codeCategoryId) {
+	protected Code getByKey(int codeId) {
 
 		String query = getByKeyQuery();
 
@@ -79,13 +81,12 @@ public class CodeCategoryDao extends EntityDao<CodeCategory> {
 			@SneakyThrows
 			@Override
 			public void setValue(PreparedStatement statement) {
-				statement.setInt(1, codeCategoryId);
+				statement.setInt(1, codeId);
 			}
 		 });
 	}
 
-	@SneakyThrows
-	protected int deleteByKey(int codeCategoryId) {
+	protected int deleteByKey(int codeId) {
 
 		String query = deleteByKeyQuery();
 
@@ -93,7 +94,7 @@ public class CodeCategoryDao extends EntityDao<CodeCategory> {
 			@SneakyThrows
 			@Override
 			public void setValue(PreparedStatement statement) {
-				statement.setInt(1, codeCategoryId);
+				statement.setInt(1, codeId);
 			}
 		 });
 	}

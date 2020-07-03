@@ -1,21 +1,21 @@
 package dao;
-import entity.UsagePerAge;
-import dao.base.ParameterSetter;
 import dao.base.EntityDao;
+import entity.PublishCount;
+import dao.base.ParameterSetter;
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
+public class PublishCountEntityDao extends EntityDao<PublishCount> {
 	//region singleton
-	private UsagePerAgeDao() {
+	private PublishCountEntityDao() {
 	}
 	
-	private static UsagePerAgeDao _instance;
+	private static PublishCountEntityDao _instance;
 	
-	public static UsagePerAgeDao getInstance() {
+	public static PublishCountEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new UsagePerAgeDao();
+			_instance = new PublishCountEntityDao();
 	
 		return _instance;
 	}
@@ -23,26 +23,25 @@ public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
 
 	@Override
 	protected String setTableName() {
-		return "UsagePerAge";
+		return "PublishCount";
 	}
 
 	@SneakyThrows
 	@Override
-	protected UsagePerAge readEntity(ResultSet result) {
-		UsagePerAge entity = new UsagePerAge();
+	protected PublishCount readEntity(ResultSet result) {
+		PublishCount entity = new PublishCount();
 
-		entity.setUsagePerAgeId(result.getInt(1));
+		entity.setPublishCountId(result.getInt(1));
 		entity.setDate(result.getString(2));
 		entity.setLocationCode(result.getInt(3));
-		entity.setAgeCode(result.getInt(4));
-		entity.setPaymentTypeCode(result.getInt(5));
-		entity.setSpend(result.getInt(6));
+		entity.setCardCount(result.getInt(4));
+		entity.setMobileCount(result.getInt(5));
 
 	return entity;
 	}
 
 	@Override
-	public int update(UsagePerAge entity) {
+	public int update(PublishCount entity) {
 
 		String query = updateQuery();
 
@@ -54,15 +53,14 @@ public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
 
 				statement.setString(1, entity.getDate());
 				statement.setInt(2, entity.getLocationCode());
-				statement.setInt(3, entity.getAgeCode());
-				statement.setInt(4, entity.getPaymentTypeCode());
-				statement.setInt(5, entity.getSpend());
-				statement.setInt(6, entity.getUsagePerAgeId());
+				statement.setInt(3, entity.getCardCount());
+				statement.setInt(4, entity.getMobileCount());
+				statement.setInt(5, entity.getPublishCountId());
 			}
 		});
 	}
 
-	public int insert(UsagePerAge entity) {
+	public int insert(PublishCount entity) {
 
 		String query = insertQuery();
 
@@ -74,14 +72,13 @@ public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
 
 				statement.setString(1, entity.getDate());
 				statement.setInt(2, entity.getLocationCode());
-				statement.setInt(3, entity.getAgeCode());
-				statement.setInt(4, entity.getPaymentTypeCode());
-				statement.setInt(5, entity.getSpend());
+				statement.setInt(3, entity.getCardCount());
+				statement.setInt(4, entity.getMobileCount());
 			}
 		});
 	}
 
-	public UsagePerAge getByKey(int usagePerAgeId) {
+	public PublishCount getByKey(int publishCountId) {
 
 		String query = getByKeyQuery();
 
@@ -89,12 +86,12 @@ public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
 			@SneakyThrows
 			@Override
 			public void setValue(PreparedStatement statement) {
-				statement.setInt(1, usagePerAgeId);
+				statement.setInt(1, publishCountId);
 			}
 		 });
 	}
 
-	public int deleteByKey(int usagePerAgeId) {
+	public int deleteByKey(int publishCountId) {
 
 		String query = deleteByKeyQuery();
 
@@ -102,7 +99,7 @@ public class UsagePerAgeDao extends EntityDao<UsagePerAge> {
 			@SneakyThrows
 			@Override
 			public void setValue(PreparedStatement statement) {
-				statement.setInt(1, usagePerAgeId);
+				statement.setInt(1, publishCountId);
 			}
 		 });
 	}

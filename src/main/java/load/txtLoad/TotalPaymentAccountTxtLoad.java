@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.TotalPaymentAccount;
-import dao.TotalPaymentAccountDao;
+import dao.TotalPaymentAccountEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -65,7 +65,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return TotalPaymentAccountDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return TotalPaymentAccountEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -81,7 +81,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(TotalPaymentAccount entity){
-		return TotalPaymentAccountDao.getInstance().insert(entity);
+		return TotalPaymentAccountEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

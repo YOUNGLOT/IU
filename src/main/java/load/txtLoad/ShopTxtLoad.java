@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.Shop;
-import dao.ShopDao;
+import dao.ShopEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -68,7 +68,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return ShopDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return ShopEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -84,7 +84,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(Shop entity){
-		return ShopDao.getInstance().insert(entity);
+		return ShopEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.UsagePerAge;
-import dao.UsagePerAgeDao;
+import dao.UsagePerAgeEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -58,7 +58,7 @@ public class UsagePerAgeJsonLoad extends JsonLoad<UsagePerAge> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsagePerAgeDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsagePerAgeEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class UsagePerAgeJsonLoad extends JsonLoad<UsagePerAge> {
 
 	@Override
 	protected int insert(UsagePerAge entity){
-		return UsagePerAgeDao.getInstance().insert(entity);
+		return UsagePerAgeEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

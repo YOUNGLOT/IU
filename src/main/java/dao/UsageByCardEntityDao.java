@@ -1,21 +1,22 @@
 package dao;
+import dao.base.EntityDao;
 import entity.UsageByCard;
 import dao.base.ParameterSetter;
-import dao.base.EntityDao;
+
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class UsageByCardDao extends EntityDao<UsageByCard> {
+public class UsageByCardEntityDao extends EntityDao<UsageByCard> {
 	//region singleton
-	private UsageByCardDao() {
+	private UsageByCardEntityDao() {
 	}
 	
-	private static UsageByCardDao _instance;
+	private static UsageByCardEntityDao _instance;
 	
-	public static UsageByCardDao getInstance() {
+	public static UsageByCardEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new UsageByCardDao();
+			_instance = new UsageByCardEntityDao();
 	
 		return _instance;
 	}

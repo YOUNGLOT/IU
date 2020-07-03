@@ -1,6 +1,7 @@
 package classMaker;
 
 import classMaker.base.LoadClassMaker;
+import lombok.extern.slf4j.Slf4j;
 
 import java.sql.SQLException;
 import java.util.Arrays;

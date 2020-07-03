@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.PublishCount;
-import dao.PublishCountDao;
+import dao.PublishCountEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -64,7 +64,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return PublishCountDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return PublishCountEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -80,7 +80,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(PublishCount entity){
-		return PublishCountDao.getInstance().insert(entity);
+		return PublishCountEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

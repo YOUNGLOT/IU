@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.UsageByGiftCard;
-import dao.UsageByGiftCardDao;
+import dao.UsageByGiftCardEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -57,7 +57,7 @@ public class UsageByGiftCardJsonLoad extends JsonLoad<UsageByGiftCard> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsageByGiftCardDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsageByGiftCardEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class UsageByGiftCardJsonLoad extends JsonLoad<UsageByGiftCard> {
 
 	@Override
 	protected int insert(UsageByGiftCard entity){
-		return UsageByGiftCardDao.getInstance().insert(entity);
+		return UsageByGiftCardEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

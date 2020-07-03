@@ -1,21 +1,22 @@
 package dao;
+import dao.base.EntityDao;
 import entity.Test;
 import dao.base.ParameterSetter;
-import dao.base.EntityDao;
+
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TestDao extends EntityDao<Test> {
+public class TestEntityDao extends EntityDao<Test> {
 	//region singleton
-	private TestDao() {
+	private TestEntityDao() {
 	}
 	
-	private static TestDao _instance;
+	private static TestEntityDao _instance;
 	
-	public static TestDao getInstance() {
+	public static TestEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new TestDao();
+			_instance = new TestEntityDao();
 	
 		return _instance;
 	}

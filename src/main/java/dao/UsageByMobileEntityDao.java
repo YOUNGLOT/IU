@@ -1,21 +1,22 @@
 package dao;
+import dao.base.EntityDao;
 import entity.UsageByMobile;
 import dao.base.ParameterSetter;
-import dao.base.EntityDao;
+
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class UsageByMobileDao extends EntityDao<UsageByMobile> {
+public class UsageByMobileEntityDao extends EntityDao<UsageByMobile> {
 	//region singleton
-	private UsageByMobileDao() {
+	private UsageByMobileEntityDao() {
 	}
 	
-	private static UsageByMobileDao _instance;
+	private static UsageByMobileEntityDao _instance;
 	
-	public static UsageByMobileDao getInstance() {
+	public static UsageByMobileEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new UsageByMobileDao();
+			_instance = new UsageByMobileEntityDao();
 	
 		return _instance;
 	}

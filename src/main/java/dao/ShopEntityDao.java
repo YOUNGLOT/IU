@@ -1,21 +1,22 @@
 package dao;
+import dao.base.EntityDao;
 import entity.Shop;
 import dao.base.ParameterSetter;
-import dao.base.EntityDao;
+
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ShopDao extends EntityDao<Shop> {
+public class ShopEntityDao extends EntityDao<Shop> {
 	//region singleton
-	private ShopDao() {
+	private ShopEntityDao() {
 	}
 	
-	private static ShopDao _instance;
+	private static ShopEntityDao _instance;
 	
-	public static ShopDao getInstance() {
+	public static ShopEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new ShopDao();
+			_instance = new ShopEntityDao();
 	
 		return _instance;
 	}

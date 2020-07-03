@@ -1,21 +1,22 @@
 package dao;
+import dao.base.EntityDao;
 import entity.TotalPaymentAccount;
 import dao.base.ParameterSetter;
-import dao.base.EntityDao;
+
 import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class TotalPaymentAccountDao extends EntityDao<TotalPaymentAccount> {
+public class TotalPaymentAccountEntityDao extends EntityDao<TotalPaymentAccount> {
 	//region singleton
-	private TotalPaymentAccountDao() {
+	private TotalPaymentAccountEntityDao() {
 	}
 	
-	private static TotalPaymentAccountDao _instance;
+	private static TotalPaymentAccountEntityDao _instance;
 	
-	public static TotalPaymentAccountDao getInstance() {
+	public static TotalPaymentAccountEntityDao getInstance() {
 		if (_instance == null)
-			_instance = new TotalPaymentAccountDao();
+			_instance = new TotalPaymentAccountEntityDao();
 	
 		return _instance;
 	}

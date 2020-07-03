@@ -1,10 +1,11 @@
 package load.txtLoad;
 import entity.Test;
-import dao.TestDao;
+import dao.TestEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
 import load.base.TxtLoad;
+
 import java.io.BufferedReader;
 
 public class TestTxtLoad extends TxtLoad<Test> {
@@ -63,7 +64,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return TestDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return TestEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -79,7 +80,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(Test entity){
-		return TestDao.getInstance().insert(entity);
+		return TestEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

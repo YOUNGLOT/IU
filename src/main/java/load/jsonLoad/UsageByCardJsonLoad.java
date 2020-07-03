@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.UsageByCard;
-import dao.UsageByCardDao;
+import dao.UsageByCardEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -57,7 +57,7 @@ public class UsageByCardJsonLoad extends JsonLoad<UsageByCard> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsageByCardDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsageByCardEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class UsageByCardJsonLoad extends JsonLoad<UsageByCard> {
 
 	@Override
 	protected int insert(UsageByCard entity){
-		return UsageByCardDao.getInstance().insert(entity);
+		return UsageByCardEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

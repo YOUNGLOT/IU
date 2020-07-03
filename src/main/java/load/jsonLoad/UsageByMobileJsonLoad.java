@@ -1,6 +1,6 @@
 package load.jsonLoad;
 import entity.UsageByMobile;
-import dao.UsageByMobileDao;
+import dao.UsageByMobileEntityDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -57,7 +57,7 @@ public class UsageByMobileJsonLoad extends JsonLoad<UsageByMobile> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsageByMobileDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsageByMobileEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public class UsageByMobileJsonLoad extends JsonLoad<UsageByMobile> {
 
 	@Override
 	protected int insert(UsageByMobile entity){
-		return UsageByMobileDao.getInstance().insert(entity);
+		return UsageByMobileEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

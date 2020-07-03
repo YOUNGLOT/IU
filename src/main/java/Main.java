@@ -1,5 +1,4 @@
 import core.Core;
-import dao.ShopDao;
 
 public class Main {
     public static void main(String[] args) {

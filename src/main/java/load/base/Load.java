@@ -1,6 +1,6 @@
 package load.base;
 
-import dao.CodeDao;
+import dao.CodeEntityDao;
 import entity.Code;
 import core.Core;
 import lombok.SneakyThrows;
@@ -73,7 +73,7 @@ public abstract class Load<Entity, Object> {
 
     protected ArrayList<Code> getCodes(){
         try {
-            return codes = CodeDao.getInstance().getAll();
+            return codes = CodeEntityDao.getInstance().getAll();
         }catch(Exception e){
             return codes;
         }
@@ -159,6 +159,7 @@ public abstract class Load<Entity, Object> {
         } catch (NullPointerException e) {
             return splittedObject[0];
         } catch (Exception e){
+            System.out.println("주소변경불가 : " + address1 +", : " + address2 );
             return "";
         }
     }
@@ -231,7 +232,7 @@ public abstract class Load<Entity, Object> {
             code.setCodeName(name);
             code.setCodeCategoryId(CodeCategoryId);
 
-            CodeDao.getInstance().insert(code);
+            CodeEntityDao.getInstance().insert(code);
             codes.add(code);
             return max;
         } catch (Exception e) {

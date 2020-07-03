@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.UsageByGiftCard;
-import dao.UsageByGiftCardDao;
+import dao.UsageByGiftCardEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -64,7 +64,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsageByGiftCardDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsageByGiftCardEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -80,7 +80,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(UsageByGiftCard entity){
-		return UsageByGiftCardDao.getInstance().insert(entity);
+		return UsageByGiftCardEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

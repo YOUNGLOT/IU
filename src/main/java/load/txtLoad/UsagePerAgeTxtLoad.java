@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.UsagePerAge;
-import dao.UsagePerAgeDao;
+import dao.UsagePerAgeEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -65,7 +65,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsagePerAgeDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsagePerAgeEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -81,7 +81,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(UsagePerAge entity){
-		return UsagePerAgeDao.getInstance().insert(entity);
+		return UsagePerAgeEntityDao.getInstance().insert(entity);
 	}
 
 	@Override

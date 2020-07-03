@@ -1,6 +1,6 @@
 package load.txtLoad;
 import entity.UsageByMobile;
-import dao.UsageByMobileDao;
+import dao.UsageByMobileEntityDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -64,7 +64,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return UsageByMobileDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return UsageByMobileEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -80,7 +80,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(UsageByMobile entity){
-		return UsageByMobileDao.getInstance().insert(entity);
+		return UsageByMobileEntityDao.getInstance().insert(entity);
 	}
 
 	@Override
