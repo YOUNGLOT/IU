@@ -64,20 +64,6 @@ public abstract class ClassMaker {
 
     //region Helper Methods
 
-    //MSSQL ResultSetMetaData 에서 불러온 types 를 Java와 매칭되는 types로 변경(타임 다듬기!!)
-    protected String refineType(String columnType) {
-        if (columnType == "NUMBER"||columnType == "int") {
-            return "Int";
-        } else if (columnType == "CHAR" || columnType == "VARCHAR2"||columnType == "nvarchar") {
-            return "String";
-        } else if (columnType == "DECIMAL") {
-            return "BigDecimal";
-        } else {
-            System.out.println(columnType + "지정되지 않아 String으로 처리했습니다. 확인해 주세요");
-            return "String";
-        }
-    }
-
     //camelCase 표기를 위해 첫글자 소문자로 변경
     protected String makeStartLetterSmall(String str) {
         if (str == "String" || str == "Date" || str == "BigDecimal") {

@@ -6,16 +6,16 @@ import lombok.SneakyThrows;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class CodeCategoryEntityDao extends EntityDao<CodeCategory> {
+public class CodeCategoryDao extends EntityDao<CodeCategory> {
 	//region singleton
-	private CodeCategoryEntityDao() {
+	private CodeCategoryDao() {
 	}
 	
-	private static CodeCategoryEntityDao _instance;
+	private static CodeCategoryDao _instance;
 	
-	public static CodeCategoryEntityDao getInstance() {
+	public static CodeCategoryDao getInstance() {
 		if (_instance == null)
-			_instance = new CodeCategoryEntityDao();
+			_instance = new CodeCategoryDao();
 	
 		return _instance;
 	}

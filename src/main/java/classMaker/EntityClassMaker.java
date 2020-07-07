@@ -52,7 +52,7 @@ public class EntityClassMaker extends ClassMaker {
         for (int i = 0; i < tableData.getColumns().length; i++) {
             code += String.format(
                     "\tprivate %s %s;\n"
-                    , makeStartLetterSmall(refineType(tableData.getColumnTypes()[i]))
+                    , makeStartLetterSmall(tableData.getColumnTypes()[i])
                     , makeStartLetterSmall(tableData.getColumns()[i]));
         }
         return code;

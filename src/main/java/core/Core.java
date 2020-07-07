@@ -33,7 +33,7 @@ public class Core {
     //커넥션은 조건없이 여기로, 다른커넥션 쓰면 꼬인다   중요한 Method라 맨위
     public final Connection getConnection() throws SQLException {
 
-        String connString = "jdbc:sqlserver://14.32.18.226:1433;database=YL1;user=as;password=1234";
+        String connString = "jdbc:sqlserver://14.32.18.226:1433;database=YL;user=as;password=1234";
 
         return DriverManager.getConnection(connString);
     }

@@ -28,7 +28,7 @@ public class TableData {
 
         for (int i = 0; i < resultSetMetaData.getColumnCount(); i++) {
             columns[i] = resultSetMetaData.getColumnName(i + 1);
-            columnTypes[i] = resultSetMetaData.getColumnTypeName(i + 1);
+            columnTypes[i] = refineType(resultSetMetaData.getColumnTypeName(i + 1));
         }
          //Method 이름 마지막에 "_" 붙인이유 : getter Method 재정의 방지
         this.columns = columns;
@@ -111,6 +111,20 @@ public class TableData {
             }
         }
         return notIdentityColumns;
+    }
+
+    //MSSQL ResultSetMetaData 에서 불러온 types 를 Java와 매칭되는 types로 변경(타임 다듬기!!)
+    protected String refineType(String columnType) {
+        if (columnType == "NUMBER"||columnType == "int") {
+            return "Int";
+        } else if (columnType == "CHAR" || columnType == "VARCHAR2"||columnType == "nvarchar"||columnType == "varchar"||columnType == "date") {
+            return "String";
+        } else if (columnType == "DECIMAL") {
+            return "BigDecimal";
+        } else {
+            System.out.println(columnType + "지정되지 않아 String으로 처리했습니다. 확인해 주세요");
+            return "String";
+        }
     }
 
 }

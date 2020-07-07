@@ -26,4 +26,4 @@ IU 기능 요약
 4 Entity, Dao Class 생성
 
 5 Load Class 생성
-    5-1 setEntity 구현
+    5-1 Load Class 구현

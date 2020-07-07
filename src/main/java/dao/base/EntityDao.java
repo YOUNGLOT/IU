@@ -117,7 +117,7 @@ public abstract class EntityDao<E> {
         statement.close();
         connection.close();
 
-        return (rowCount == 1) ? 0 : 1 ;
+        return (rowCount == 1) ? 1 : 0 ;
     }
 
     @SneakyThrows
@@ -182,6 +182,8 @@ public abstract class EntityDao<E> {
         return String.format("select * from %s", tableName);
     }
 
+    //region Helper Method for Query
+
     private String keyQuery() {
         String query = "";
         for (int i = 0; i < tableData.getPrimaryKeyColumns().length; i++) {
@@ -205,6 +207,7 @@ public abstract class EntityDao<E> {
         }
         return query;
     }
+    //endregion
     //endregion
 
 

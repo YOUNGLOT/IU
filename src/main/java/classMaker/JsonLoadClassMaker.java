@@ -101,10 +101,10 @@ public class JsonLoadClassMaker extends LoadClassMaker {
             } else if (colmnName.contains("Code")) {
                 return String.format("\t\tentity.set%s(nameToCode((String) object.get(\"\")));\n"
                         , makeStartLetterUpper(colmnName));
-            } else if (columnType.equals("int")) {
+            } else if (columnType.equals("int")||columnType.equals("Int")) {
                 return String.format("\t\tentity.set%s(stringToInt((String) object.get(\"\")));\n"
                         , makeStartLetterUpper(colmnName));
-            } else if (columnType.equals("nvarchar")) {
+            } else if (columnType.equals("nvarchar")||columnType.equals("String")) {
                 return String.format("\t\tentity.set%s((String) object.get(\"\"));\n"
                         , makeStartLetterUpper(colmnName));
             } else {

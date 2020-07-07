@@ -1,6 +1,6 @@
 package load.base;
 
-import dao.CodeEntityDao;
+import dao.CodeDao;
 import entity.Code;
 import core.Core;
 import lombok.SneakyThrows;
@@ -73,7 +73,7 @@ public abstract class Load<Entity, Object> {
 
     protected ArrayList<Code> getCodes(){
         try {
-            return codes = CodeEntityDao.getInstance().getAll();
+            return codes = CodeDao.getInstance().getAll();
         }catch(Exception e){
             return codes;
         }
@@ -99,14 +99,12 @@ public abstract class Load<Entity, Object> {
     //","로 스플릿 할때  문자열 내에 있는 "," 제거 (이 함수 구현하는데 2일 걸림ㅠㅠ ;; 노수면 강행군)
     protected String replaceCommaInQuotes(String string, String replaceString) {
         try {
-            String str1 = string;
+            String str1 = string;//clone 생성
             ArrayList<Integer> arrayList = new ArrayList<>();
             int i = 0;
             while (str1.indexOf("\"") != -1) {
                 arrayList.add(str1.indexOf("\""));
-                String str11 = str1.substring(0, arrayList.get(i));
-                String str12 = str1.substring(arrayList.get(i) + 1);
-                str1 = str11 + "-" + str12;
+                str1 = str1.substring(0, arrayList.get(i)) + "-" + str1.substring(arrayList.get(i) + 1);
                 i++;
             }
             for (int j = 0; j < arrayList.size() / 2; j++) {
@@ -128,17 +126,9 @@ public abstract class Load<Entity, Object> {
             int index2 = string.indexOf(endString);
 
             if (index1 < index2) {
-
-                String str1 = string.substring(0, index1);
-                String str2 = string.substring(index2 + 1);
-
-                return str1 + str2;
-            } else {
-
-                String str1 = string.substring(0, index2);
-                String str2 = string.substring(index1 + 1);
-
-                return str1 + str2;
+                return string.substring(0, index1) + string.substring(index2 + 1);
+            } else {//실수로 반대로 입력했어도 쌉가능
+                return string.substring(0, index2) + string.substring(index1 + 1);
             }
         } catch (Exception e) {
             System.out.println("partialDelection Exception" + e);
@@ -169,7 +159,7 @@ public abstract class Load<Entity, Object> {
         return new java.sql.Date(new SimpleDateFormat(format).parse(str).getTime());
     }
 
-    //Integer.parseInt -> input값이 null 일경우 return 0
+    //Integer.parseInt -> input값이 null 일경우 return 0, not Integerable 일 경우 return -1
     protected int stringToInt(String string) {
         if (string == null) {
             return 0;
@@ -203,7 +193,7 @@ public abstract class Load<Entity, Object> {
 
         int code = 0;
         try {
-            return code = nameToCode(name);
+            return nameToCode(name);
         } catch (Exception e) {
             return code;
         }
@@ -232,7 +222,7 @@ public abstract class Load<Entity, Object> {
             code.setCodeName(name);
             code.setCodeCategoryId(CodeCategoryId);
 
-            CodeEntityDao.getInstance().insert(code);
+            CodeDao.getInstance().insert(code);
             codes.add(code);
             return max;
         } catch (Exception e) {

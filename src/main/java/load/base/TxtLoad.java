@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
 public abstract class TxtLoad<Entity> extends Load<Entity, BufferedReader> {
+    protected String characterSet = setCharacterSet();
 
     @SneakyThrows
     public void loading(BufferedReader object) {
@@ -43,7 +44,7 @@ public abstract class TxtLoad<Entity> extends Load<Entity, BufferedReader> {
     @Override
     protected BufferedReader getFile(String fileDirectory) {
         try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fileDirectory)), setCharacterSet()));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(new File(fileDirectory)), characterSet));
             return br;
         } catch (Exception e) {
             System.out.println("FileReader Exception : " + e + "\n");

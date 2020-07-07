@@ -1,6 +1,6 @@
 package load.code.txtLoad;
 import entity.Code;
-import dao.CodeEntityDao;
+import dao.CodeDao;
 import helper.runnable.ParallelInsert;
 import java.util.ArrayList;
 import lombok.SneakyThrows;
@@ -61,7 +61,7 @@ private String characterSet;
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return CodeEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return CodeDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -77,7 +77,7 @@ private String characterSet;
 
 	@Override
 	protected int insert(Code entity){
-		CodeEntityDao.getInstance().insert(entity);
+		CodeDao.getInstance().insert(entity);
 		return identity;
 	}
 

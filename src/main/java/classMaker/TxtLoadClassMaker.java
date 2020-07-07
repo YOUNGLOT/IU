@@ -90,6 +90,7 @@ public class TxtLoadClassMaker extends LoadClassMaker {
     }
     private String writeSetCharacterSetCode(String code){
         code += String.format(
+                "\t//todo 기본 characterSet : \"UTF-8\" 오류시 변경 ex)\"euc-k\"" +
                 "\t@Override\n" +
                         "\tprotected String setCharacterSet() {\n" +
                         "\t\treturn characterSet;\n" +
@@ -109,10 +110,10 @@ public class TxtLoadClassMaker extends LoadClassMaker {
             }else if(colmnName.contains("Code")){
                 return String.format("\t\t%s.set%s(nameToCode(array[%d]));\n"
                         ,makeStartLetterSmall(tableName), makeStartLetterUpper(colmnName), i);
-            }else if (columnType.equals("int")){
+            }else if (columnType.equals("int")||columnType.equals("Int")){
                 return String.format("\t\t%s.set%s(stringToInt(array[%d]));\n"
                         ,makeStartLetterSmall(tableName), makeStartLetterUpper(colmnName), i);
-            }else if (columnType.equals("nvarchar")){
+            }else if (columnType.equals("nvarchar")||columnType.equals("String")){
                 return String.format("\t\t%s.set%s(array[%d]);\n"
                         ,makeStartLetterSmall(tableName), makeStartLetterUpper(colmnName), i);
             }else{

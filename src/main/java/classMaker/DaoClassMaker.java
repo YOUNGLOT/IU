@@ -88,7 +88,7 @@ public class DaoClassMaker extends ClassMaker {
         for (int i = 0; i < tableData.getColumns().length; i++) {
             code += String.format(
                     "\t\tentity.set%s(result.get%s(%d));\n"
-                    , makeStartLetterUpper(tableData.getColumns()[i]), refineType(tableData.getColumnTypes()[i]), i + 1);
+                    , makeStartLetterUpper(tableData.getColumns()[i]), tableData.getColumnTypes()[i], i + 1);
         }
 
         code += String.format(
@@ -109,10 +109,10 @@ public class DaoClassMaker extends ClassMaker {
                         "\t\t\tpublic void setValue(PreparedStatement statement) {\n\n");
         for (int i = 0; i < tableData.getColumns().length - 1; i++) {
             code += String.format(
-                    "\t\t\t\tstatement.set%s(%d, entity.get%s());\n", refineType(tableData.getColumnTypes()[i + 1]), i + 1, makeStartLetterUpper(tableData.getColumns()[i + 1]));
+                    "\t\t\t\tstatement.set%s(%d, entity.get%s());\n", tableData.getColumnTypes()[i + 1], i + 1, makeStartLetterUpper(tableData.getColumns()[i + 1]));
             if (i == tableData.getColumns().length - 2) {
                 code += String.format(
-                        "\t\t\t\tstatement.set%s(%d, entity.get%s());\n", refineType(tableData.getColumnTypes()[0]), i + 2, tableData.getColumns()[0]);
+                        "\t\t\t\tstatement.set%s(%d, entity.get%s());\n", tableData.getColumnTypes()[0], i + 2, tableData.getColumns()[0]);
             }
         }
         return code += String.format(
@@ -145,7 +145,7 @@ public class DaoClassMaker extends ClassMaker {
             if (!Arrays.stream(tableData.getIdentityColumns()).anyMatch(tableData.getColumns()[i]::equals)) {
                 code += String.format(
                         "\t\t\t\tstatement.set%s(%d, entity.get%s());\n"
-                        , refineType(tableData.getColumnTypes()[i]), count, makeStartLetterUpper(tableData.getColumns()[i]));
+                        , tableData.getColumnTypes()[i], count, makeStartLetterUpper(tableData.getColumns()[i]));
                 count++;
             }
         }
@@ -243,19 +243,6 @@ public class DaoClassMaker extends ClassMaker {
                         "\t\t });\n" +
                         "\t}\n\n"
         );
-    }
-
-    protected String refineType(String columnType) {
-        if (columnType == "NUMBER" || columnType == "int") {
-            return "Int";
-        } else if (columnType == "CHAR" || columnType == "VARCHAR2" || columnType == "nvarchar") {
-            return "String";
-        } else if (columnType == "DECIMAL") {
-            return "BigDecimal";
-        } else {
-            System.out.println(columnType + " : 지정되지 않아 String으로 처리했습니다. 확인해 주세요");
-            return "String";
-        }
     }
 
 }

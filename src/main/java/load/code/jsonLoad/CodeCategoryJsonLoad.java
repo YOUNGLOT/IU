@@ -1,6 +1,6 @@
 package load.code.jsonLoad;
 import entity.CodeCategory;
-import dao.CodeCategoryEntityDao;
+import dao.CodeCategoryDao;
 import helper.runnable.ParallelInsert;
 import load.base.JsonLoad;;
 import org.json.simple.JSONArray;import org.json.simple.JSONObject;
@@ -51,7 +51,7 @@ public class CodeCategoryJsonLoad extends JsonLoad<CodeCategory> {
 
 	@Override
 	protected ArrayList getEntities() {
-		try { return CodeCategoryEntityDao.getInstance().getAll(); } catch (Exception e){ return entities; }
+		try { return CodeCategoryDao.getInstance().getAll(); } catch (Exception e){ return entities; }
 	}
 
 	@Override
@@ -67,7 +67,7 @@ public class CodeCategoryJsonLoad extends JsonLoad<CodeCategory> {
 
 	@Override
 	protected int insert(CodeCategory entity){
-		CodeCategoryEntityDao.getInstance().insert(entity);
+		CodeCategoryDao.getInstance().insert(entity);
 		return identity;
 	}
 
