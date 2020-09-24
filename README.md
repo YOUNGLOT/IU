@@ -43,6 +43,8 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
     
 
 # 극복 했던 점
+
+
   CASE1-
   
   DB의 MetaData, Connection, SystemData 들을 가져와 멤버 변수로 활요하다보니
@@ -62,6 +64,7 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
    후에 이것이 캡슐화 라는것을 깨닳게 됨
    
    
+   
    CASE2-
    
    File 에서 가져온 Data 들을 적재할 때 중복체크를 위해 Select를 하였음 
@@ -73,6 +76,7 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
     but) insert 시 Identity 값이 없기 때문에 Entity 비교가 힘듬
     
    -equals() 재정의 hashcode() 재정의 를 통하여 Key, Candidate값들을 비교하여 중복제거에 성공
+   
    
    
    CASE3-
