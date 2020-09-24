@@ -88,7 +88,9 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
    but) 중복된 작업을 멀티 Thread로 하는 것을 발견
    
    -Thread 적제 단계에서 늘리지 않고 File Data를 리딩하는 for문 앞에서 늘림, synchronized 공부
+   
       이유 : file Data 1개당 Insert 1회이기 때문
+      
    Thread를 늘릴 때 스코프의 중요성을 배움.
 
     
