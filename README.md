@@ -1,10 +1,15 @@
 # 해당 툴의 기능
 
   (Database 구축 이후)
+  
   Dto Class 자동생성
+  
   Dao Class 자동생성
+  
   LoadingClass 자동생성
+  
   예외 발생 시 Exception Pakage에 Exception Txt 파일 생성
+  
 
 # 개발 배경
 
