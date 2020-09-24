@@ -39,16 +39,18 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
   Dao Class 생성
   
     ParameterSetter Interface 사용
+    
     Dao Class 에 필요한 Help Method를 부모 클래스에 구현
+    
     PrimaryKey 값과 Identity 값을 사용하여 쿼리문 작성 Method를 부모 클래스에 구현
+    
     TableData를 활용하여 PreparedStatement, ResultSet 에 Entity 매칭하는 함수 구현
     
-  LoadClass 생성
-  
-    Txt와 Json Class Maker 분리
-      Txt 
-      
+  LoadClass 생성  
     
+    Txt와 Json Class Maker 분리
+    
+    각각의 Class에 맞게 구현 
     
 
 # 극복 했던 점
