@@ -31,16 +31,20 @@ DB SysTable에서 Table의 정보를 Java로 가져 올수 있다는 것을 습�
 # 구현 방법
   
   Dto Class 생성
+  
     Lombok 의 @Data 어노테이션 사용 하여 코드량 압축
+    
     Column Name과  Column Type 을 받아온 순서대로 write
   
   Dao Class 생성
+  
     ParameterSetter Interface 사용
     Dao Class 에 필요한 Help Method를 부모 클래스에 구현
     PrimaryKey 값과 Identity 값을 사용하여 쿼리문 작성 Method를 부모 클래스에 구현
     TableData를 활용하여 PreparedStatement, ResultSet 에 Entity 매칭하는 함수 구현
     
   LoadClass 생성
+  
     Txt와 Json Class Maker 분리
       Txt 
       
