@@ -14,7 +14,7 @@
 # 개발 배경
 
 DB에 데이터 적재
-  TXT, CSV, JSON file 로 된 Data 들을 DB에 적재 시 매번 툴을 개발하여 적재
+   - TXT, CSV, JSON file 로 된 Data 들을 DB에 적재 시 매번 툴을 개발하여 적재
   1. DB연결
   2. Dto
   3. Dao
