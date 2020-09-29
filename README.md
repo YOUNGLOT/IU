@@ -1,6 +1,6 @@
 # 해당 툴의 기능
 
-  (Database 구축 이후)
+  (DataBase 구축 이후)
   
   Dto Class 자동생성
   
